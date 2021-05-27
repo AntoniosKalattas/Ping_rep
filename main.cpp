@@ -23,10 +23,8 @@ int check(string file){
     while(!fin.eof()){
         getline(fin,a);
         if(a[0]=='R'){
-            cout<<a;
             for(int i=0;i<a.size();i++){
-                if(a[i]=='t'){
-                    cout<<"ok2";    
+                if(a[i]=='t'){   
                     x=i+4;
                     while(a[x]!='m'){
                         b+=a[x];
@@ -57,7 +55,7 @@ int main(){
     cin>>b;
     a+=b;
     int j;
-    //while(true){
+    while(true){
         system((a+">" + file_name).c_str()); 
         j=check(file_name);
         if(j==0)
@@ -66,5 +64,5 @@ int main(){
             cout<<YELLOW<<"MINIMUM"<<RESET<<endl;
         else
             cout<<RED<<"NOT OK"<<RESET<<endl;
-    //}
+    }
 }
