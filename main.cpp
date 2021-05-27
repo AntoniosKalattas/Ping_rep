@@ -6,20 +6,27 @@
 #include <iterator>
 #include <cstdlib>
 #include<string>
-#include<windows.h>
+
+
+#define RESET "\033[0m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define RED "\033[31m"
 
 using namespace std;
 
-string check(string file){
+int check(string file){
     string a,b;
     int x,c;
     vector<int>ms;
     ifstream fin(file);
-    while(ios::out|ios::app){
+    while(!fin.eof()){
         getline(fin,a);
         if(a[0]=='R'){
-            for(int i=0;i<a.size();){
+            cout<<a;
+            for(int i=0;i<a.size();i++){
                 if(a[i]=='t'){
+                    cout<<"ok2";    
                     x=i+4;
                     while(a[x]!='m'){
                         b+=a[x];
@@ -33,11 +40,11 @@ string check(string file){
     }
     for(int i=0;i<ms.size();i++){
         if(ms[i]<20)
-            return "ok";
+            return 0;
         else if(ms[i]>20 && ms[i]<60)
-            return "minimum";
+            return 1;
         else
-            return "bad health";
+            return 2;
     }
 }
 
@@ -49,9 +56,15 @@ int main(){
     string result;
     cin>>b;
     a+=b;
-    while(true){
+    int j;
+    //while(true){
         system((a+">" + file_name).c_str()); 
-        check(file_name);
-        
-    }
+        j=check(file_name);
+        if(j==0)
+            cout<<GREEN<<"OK!"<<RESET<<endl;
+        else if(j==1)
+            cout<<YELLOW<<"MINIMUM"<<RESET<<endl;
+        else
+            cout<<RED<<"NOT OK"<<RESET<<endl;
+    //}
 }
