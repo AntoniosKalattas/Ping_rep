@@ -8,7 +8,7 @@
 #include<string>
 #include<ctime>
 
-
+#define BLUE "\033[34m"
 #define RESET "\033[0m"
 #define GREEN "\033[32m"
 #define YELLOW "\033[33m"
@@ -23,7 +23,13 @@ int check(string file){
     ifstream fin(file);
     while(!fin.eof()){
         getline(fin,a);
+        if(a[0]=='P'){
+            if(a=="PING: transmit failed. General failure. ")
+                return -1;
+        }
         if(a[0]=='R'){
+            if(a=="Request timed out.")
+                return -1;
             for(unsigned int i=0;i<a.size();i++){
                 if(a[i]=='t'){   
                     x=i+4;
@@ -66,6 +72,10 @@ int main(){
             cout<<"["<<ltm->tm_hour<<":"<<30+ltm->tm_min<<":"<<ltm->tm_sec<<"] "<<GREEN<<"OK!"<<RESET<<endl;
         else if(j==1)
             cout<<"["<<ltm->tm_hour<<":"<<ltm->tm_min<<":"<<ltm->tm_sec<<"] "<<YELLOW<<"MINIMUM"<<RESET<<endl;
+        else if(j==-1){
+            cout<<BLUE<<"request time out. Check the ip address again";
+            return 0;
+        }
         else{
             cout<<"["<<ltm->tm_hour<<":"<<30+ltm->tm_min<<":"<<ltm->tm_sec<<"] "<<RED<<"NOT OK"<<RESET<<endl;
             fout<<"["<<ltm->tm_hour<<":"<<30+ltm->tm_min<<":"<<ltm->tm_sec<<"] "<<RED<<"NOT OK"<<RESET<<endl;
