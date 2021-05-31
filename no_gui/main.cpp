@@ -16,7 +16,8 @@
 
 using namespace std;
 
-int check(string file){
+int check(string file, string ip){
+    cout<<"Reply from "+ip+": Destination host unreachable.";
     string a,b;
     int x,c;
     vector<int>ms;
@@ -67,7 +68,7 @@ int main(){
         system((a+">" + file_name).c_str());
         time_t now = time(0);
         tm *ltm = localtime(&now);
-        j=check(file_name);
+        j=check(file_name,b);
         if(j==0)
             cout<<"["<<ltm->tm_hour<<":"<<30+ltm->tm_min<<":"<<ltm->tm_sec<<"] "<<GREEN<<"OK!"<<RESET<<endl;
         else if(j==1)
@@ -75,6 +76,10 @@ int main(){
         else if(j==-1){
             cout<<BLUE<<"request time out. Check the ip address again";
             return 0;
+        }
+        else if(j==-3){
+            cout<<RED<<"The ip is unreachable. Please check the ip and try again";
+            break;
         }
         else{
             cout<<"["<<ltm->tm_hour<<":"<<30+ltm->tm_min<<":"<<ltm->tm_sec<<"] "<<RED<<"NOT OK"<<RESET<<endl;
