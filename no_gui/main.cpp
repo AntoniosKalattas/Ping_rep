@@ -61,6 +61,7 @@ int main(){
     string a="ping ";
     string b;
     string result;
+    cout<<"ip: ";
     cin>>b;
     a+=b;
     int j;
