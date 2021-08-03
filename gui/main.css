@@ -1,0 +1,29 @@
+body{
+    color:white;
+}
+*{
+    background-color:#06306E;
+}
+
+.form{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
+.cont {
+    width: 500px;
+    margin: auto;
+    border: 3px solid #73AD21;position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    height:100px;
+  }
+
+.button {
+    color:white;
+    size: 200px;
+}
