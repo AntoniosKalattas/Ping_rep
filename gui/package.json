@@ -9,7 +9,7 @@
   "author": "Antonios Kalattas",
   "license": "MIT",
   "dependencies": {
-    "electron": "^13.1.7",
+    "electron": "^24.1.2",
     "nan": "^2.14.2"
   }
 }
